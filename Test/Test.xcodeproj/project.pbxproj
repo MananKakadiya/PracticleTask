@@ -13,6 +13,14 @@
 		E0AFC80527D636F1006BFB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0AFC80327D636F1006BFB26 /* Main.storyboard */; };
 		E0AFC80727D636F2006BFB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0AFC80627D636F2006BFB26 /* Assets.xcassets */; };
 		E0AFC80A27D636F2006BFB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0AFC80827D636F2006BFB26 /* LaunchScreen.storyboard */; };
+		E0AFC81627D637B2006BFB26 /* ServiceMapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0AFC81227D637B2006BFB26 /* ServiceMapping.plist */; };
+		E0AFC81727D637B2006BFB26 /* BaseServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC81327D637B2006BFB26 /* BaseServiceResponse.swift */; };
+		E0AFC81827D637B2006BFB26 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC81427D637B2006BFB26 /* ServiceManager.swift */; };
+		E0AFC81927D637B2006BFB26 /* ServiceMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC81527D637B2006BFB26 /* ServiceMapping.swift */; };
+		E0AFC82727D639DF006BFB26 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC81B27D639DF006BFB26 /* Utilities.swift */; };
+		E0AFC82A27D639DF006BFB26 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC81F27D639DF006BFB26 /* StringConstants.swift */; };
+		E0AFC82C27D639DF006BFB26 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC82227D639DF006BFB26 /* File.swift */; };
+		E0AFC82D27D639DF006BFB26 /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E0AFC82627D639DF006BFB26 /* UIViewController+Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +32,15 @@
 		E0AFC80627D636F2006BFB26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0AFC80927D636F2006BFB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0AFC80B27D636F2006BFB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E0AFC81227D637B2006BFB26 /* ServiceMapping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ServiceMapping.plist; sourceTree = "<group>"; };
+		E0AFC81327D637B2006BFB26 /* BaseServiceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceResponse.swift; sourceTree = "<group>"; };
+		E0AFC81427D637B2006BFB26 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		E0AFC81527D637B2006BFB26 /* ServiceMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceMapping.swift; sourceTree = "<group>"; };
+		E0AFC81B27D639DF006BFB26 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E0AFC81F27D639DF006BFB26 /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		E0AFC82227D639DF006BFB26 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E0AFC82527D639DF006BFB26 /* UIViewController+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utils.h"; sourceTree = "<group>"; };
+		E0AFC82627D639DF006BFB26 /* UIViewController+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +76,69 @@
 				E0AFC7FD27D636F1006BFB26 /* AppDelegate.swift */,
 				E0AFC7FF27D636F1006BFB26 /* SceneDelegate.swift */,
 				E0AFC80127D636F1006BFB26 /* ViewController.swift */,
+				E0AFC81D27D639DF006BFB26 /* Constants */,
+				E0AFC81A27D639DF006BFB26 /* Common Classes */,
+				E0AFC82327D639DF006BFB26 /* Extensions */,
+				E0AFC82127D639DF006BFB26 /* Model */,
+				E0AFC81127D637B2006BFB26 /* ServiceClass */,
 				E0AFC80327D636F1006BFB26 /* Main.storyboard */,
 				E0AFC80627D636F2006BFB26 /* Assets.xcassets */,
 				E0AFC80827D636F2006BFB26 /* LaunchScreen.storyboard */,
 				E0AFC80B27D636F2006BFB26 /* Info.plist */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		E0AFC81127D637B2006BFB26 /* ServiceClass */ = {
+			isa = PBXGroup;
+			children = (
+				E0AFC81227D637B2006BFB26 /* ServiceMapping.plist */,
+				E0AFC81327D637B2006BFB26 /* BaseServiceResponse.swift */,
+				E0AFC81427D637B2006BFB26 /* ServiceManager.swift */,
+				E0AFC81527D637B2006BFB26 /* ServiceMapping.swift */,
+			);
+			path = ServiceClass;
+			sourceTree = "<group>";
+		};
+		E0AFC81A27D639DF006BFB26 /* Common Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E0AFC81B27D639DF006BFB26 /* Utilities.swift */,
+			);
+			path = "Common Classes";
+			sourceTree = "<group>";
+		};
+		E0AFC81D27D639DF006BFB26 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E0AFC81F27D639DF006BFB26 /* StringConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E0AFC82127D639DF006BFB26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0AFC82227D639DF006BFB26 /* File.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0AFC82327D639DF006BFB26 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E0AFC82427D639DF006BFB26 /* UIViewController+Utils */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E0AFC82427D639DF006BFB26 /* UIViewController+Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E0AFC82527D639DF006BFB26 /* UIViewController+Utils.h */,
+				E0AFC82627D639DF006BFB26 /* UIViewController+Utils.m */,
+			);
+			path = "UIViewController+Utils";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +202,7 @@
 				E0AFC80A27D636F2006BFB26 /* LaunchScreen.storyboard in Resources */,
 				E0AFC80727D636F2006BFB26 /* Assets.xcassets in Resources */,
 				E0AFC80527D636F1006BFB26 /* Main.storyboard in Resources */,
+				E0AFC81627D637B2006BFB26 /* ServiceMapping.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +213,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0AFC81927D637B2006BFB26 /* ServiceMapping.swift in Sources */,
+				E0AFC82C27D639DF006BFB26 /* File.swift in Sources */,
+				E0AFC82D27D639DF006BFB26 /* UIViewController+Utils.m in Sources */,
 				E0AFC80227D636F1006BFB26 /* ViewController.swift in Sources */,
+				E0AFC82727D639DF006BFB26 /* Utilities.swift in Sources */,
 				E0AFC7FE27D636F1006BFB26 /* AppDelegate.swift in Sources */,
 				E0AFC80027D636F1006BFB26 /* SceneDelegate.swift in Sources */,
+				E0AFC81727D637B2006BFB26 /* BaseServiceResponse.swift in Sources */,
+				E0AFC82A27D639DF006BFB26 /* StringConstants.swift in Sources */,
+				E0AFC81827D637B2006BFB26 /* ServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
