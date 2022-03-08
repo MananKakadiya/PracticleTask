@@ -16,7 +16,7 @@ static let AlertViewTitle = "Test"
 //MARK: Alert Messages
     struct AlertMessages {
         static let enterNumber = "Please enter Number"
-        static let enterValidNumber = "Enter number which is greater then 3"
+        static let enterValidNumber = "Enter valid mobile number"
         
         static let enterName = "Please enter name"
     }

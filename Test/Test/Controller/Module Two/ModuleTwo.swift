@@ -20,7 +20,7 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
+        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnBack)
         btnBack.heightAnchor.constraint(equalToConstant: 50).isActive = true
         btnBack.widthAnchor.constraint(equalToConstant: 80).isActive = true

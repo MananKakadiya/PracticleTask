@@ -10,8 +10,8 @@ import UIKit
 
 class photoCell: UITableViewCell {
     
-    let staticTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
-    let lblTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let staticTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let lblTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
     
     let imgView = UIImageView()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
