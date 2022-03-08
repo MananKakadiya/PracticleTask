@@ -31,14 +31,3 @@ class NetworkClient : NSObject {
 }
 
 
-extension NSObject {
-    func Decode<T: Decodable>(modelClass: T.Type, from inputData: Data) -> T?{
-        do {
-            let resultData = try JSONDecoder().decode(modelClass.self, from: inputData)
-            return resultData
-        } catch let message {
-            print("JSON serialization error:" + "\(message)")
-            return nil
-        }
-    }
-}

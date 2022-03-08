@@ -43,6 +43,34 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         photoTblView.reloadData()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+                self.photoTblView.es.addPullToRefresh {
+                    self.pullToRefresh()
+                }
+        }
+    }
+    
+    func pullToRefresh(){
+       
+        apiData.removeAll()
+        NetworkClient.shared.callGETApi(url: StringConstants.baseURL) {responseData in
+            if let model = self.Decode(modelClass: [PhotoModel].self, from: responseData){
+                print(model)
+                DispatchQueue.main.async {
+                    self.apiData = model
+                    self.reloadData()
+                }
+            }
+        }
+    }
+    
+    func reloadData(){
+        self.photoTblView.es.stopLoadingMore()
+        self.photoTblView.es.stopPullToRefresh()
+        photoTblView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")

@@ -129,11 +129,3 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
-
-extension String {
-    var isBlank : Bool {
-        return (self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-    }
-    
-}
-

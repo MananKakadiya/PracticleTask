@@ -38,8 +38,6 @@ class ViewController: UIViewController {
     }
     
     @objc func navigateToModuleTwo(_ sender: UIButton) {
-        print("Pressed")
-        
         NetworkClient.shared.callGETApi(url: StringConstants.baseURL) {responseData in
             if let model = self.Decode(modelClass: [PhotoModel].self, from: responseData){
                 print(model)
