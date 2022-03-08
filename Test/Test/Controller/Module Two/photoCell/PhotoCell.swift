@@ -10,8 +10,8 @@ import UIKit
 
 class photoCell: UITableViewCell {
     
-    let staticTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
-    let lblTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let staticTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let lblTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
     
     let imgView = UIImageView()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,16 +28,16 @@ class photoCell: UITableViewCell {
         addSubview(lblTitle)
         
         imgView.translatesAutoresizingMaskIntoConstraints = false
-        imgView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10).isActive = true
-        imgView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        imgView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        imgView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        imgView.leftAnchor.constraint(equalTo: leftAnchor, constant: DEVICE.IS_IPHONE ? 15 : 25).isActive = true
+        imgView.topAnchor.constraint(equalTo: topAnchor, constant: DEVICE.IS_IPHONE ? 15 : 25).isActive = true
+        imgView.heightAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 100 : 120).isActive = true
+        imgView.widthAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 100 : 120).isActive = true
         
-        staticTitle.leftAnchor.constraint(equalTo: imgView.rightAnchor, constant: 10).isActive = true
+        staticTitle.leftAnchor.constraint(equalTo: imgView.rightAnchor, constant: DEVICE.IS_IPHONE ? 10 : 15).isActive = true
         staticTitle.topAnchor.constraint(equalTo: imgView.topAnchor, constant: 0).isActive = true
 
         lblTitle.leftAnchor.constraint(equalTo: staticTitle.rightAnchor, constant: 0).isActive = true
-        lblTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true
+        lblTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: DEVICE.IS_IPHONE ? -10 : -15).isActive = true
         lblTitle.topAnchor.constraint(equalTo: staticTitle.topAnchor).isActive = true
         lblTitle.numberOfLines = 0
 

@@ -20,10 +20,10 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
+        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnBack)
-        btnBack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btnBack.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        btnBack.heightAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 50 : 80).isActive = true
+        btnBack.widthAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 80 : 120).isActive = true
         btnBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 44).isActive = true
         btnBack.addTarget(self, action: #selector(btnBack_Clicked(_ :)), for: .touchUpInside)
         
@@ -35,9 +35,9 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         photoTblView.prefetchDataSource = self
         self.view.addSubview(photoTblView)
         
-        photoTblView.topAnchor.constraint(equalTo: btnBack.bottomAnchor, constant: 10).isActive = true
-        photoTblView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        photoTblView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        photoTblView.topAnchor.constraint(equalTo: btnBack.bottomAnchor, constant: DEVICE.IS_IPHONE ? 10 : 15).isActive = true
+        photoTblView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DEVICE.IS_IPHONE ? 10 : 15).isActive = true
+        photoTblView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: DEVICE.IS_IPHONE ? -10 : -15).isActive = true
         photoTblView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
         photoTblView.register(photoCell.self, forCellReuseIdentifier: "photoCell")
         
@@ -71,7 +71,7 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 120.00
+            return DEVICE.IS_IPHONE ? 120 : 180
         }
     
     @objc func btnBack_Clicked(_ sender: UIButton) {

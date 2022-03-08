@@ -8,9 +8,7 @@
 import Foundation
 
 struct StringConstants {
-
     static let baseURL = "http://jsonplaceholder.typicode.com/photos"
-    
     
 static let AlertViewTitle = "Test"
 //MARK: Alert Messages

@@ -23,10 +23,10 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             phoneContacts.append(PhoneContactModel(contact: contact))
         }
         
-        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 15.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
+        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnBack)
-        btnBack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btnBack.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        btnBack.heightAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 50 : 80).isActive = true
+        btnBack.widthAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 80 : 120).isActive = true
         btnBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 44).isActive = true
         btnBack.addTarget(self, action: #selector(btnBack_Clicked(_ :)), for: .touchUpInside)
         
@@ -37,18 +37,18 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         collView.delegate = self
         self.view.addSubview(collView)
 
-        collView.topAnchor.constraint(equalTo: btnBack.bottomAnchor, constant: 10).isActive = true
-        collView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        collView.topAnchor.constraint(equalTo: btnBack.bottomAnchor, constant: DEVICE.IS_IPHONE ? 10 : 15).isActive = true
+        collView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DEVICE.IS_IPHONE ? 10 : 15).isActive = true
         collView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         collView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
         collView.register(phoneCell.self, forCellWithReuseIdentifier: "phoneCell")
         
-        let btnAddContact = UIViews.makeButton(titleColor: .blue, font: UIFont.init(name: "Arial", size: 15.0), background: .white,backgroundImage: "addNumber", cornerRadius: 0.0, borderWidth: 0.0)
+        let btnAddContact = UIViews.makeButton(titleColor: .blue, font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white,backgroundImage: "addNumber", cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnAddContact)
-        btnAddContact.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btnAddContact.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        btnAddContact.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        btnAddContact.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -54).isActive = true
+        btnAddContact.heightAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 50 : 80).isActive = true
+        btnAddContact.widthAnchor.constraint(equalToConstant: DEVICE.IS_IPHONE ? 50 : 80).isActive = true
+        btnAddContact.rightAnchor.constraint(equalTo: view.rightAnchor, constant: DEVICE.IS_IPHONE ? -20 : -35).isActive = true
+        btnAddContact.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: DEVICE.IS_IPHONE ? -55 : -70).isActive = true
         btnAddContact.addTarget(self, action: #selector(btnAddContact_Clicked(_ :)), for: .touchUpInside)
         
     }
@@ -68,7 +68,7 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width/2.0) - 2
-        return CGSize(width: width, height: 130.0)
+        return CGSize(width: width, height: DEVICE.IS_IPHONE ? 130 : 165)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -80,7 +80,7 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return DEVICE.IS_IPHONE ? 5 : 8
     }
     
     @objc func btnBack_Clicked(_ sender: UIButton) {
