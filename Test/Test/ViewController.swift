@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let btnModuleOne = Utilities.makeButton(title: "Module 1", titleColor: .black, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 3.0, borderWidth: 2)
+        let btnModuleOne = UIViews.makeButton(title: "Module 1", titleColor: .black, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 3.0, borderWidth: 2)
         view.addSubview(btnModuleOne)
         // Adding Constraints
         btnModuleOne.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         btnModuleOne.addTarget(self, action: #selector(navigateToModuleOne(_ :)), for: .touchUpInside)
         
         
-        let btnModuleTwo = Utilities.makeButton(title: "Module 2", titleColor: .black, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 3.0, borderWidth: 2)
+        let btnModuleTwo = UIViews.makeButton(title: "Module 2", titleColor: .black, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 3.0, borderWidth: 2)
         view.addSubview(btnModuleTwo)
         
         btnModuleTwo.heightAnchor.constraint(equalToConstant: 50).isActive = true

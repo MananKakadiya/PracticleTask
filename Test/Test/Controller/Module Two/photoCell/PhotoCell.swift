@@ -10,8 +10,8 @@ import UIKit
 
 class photoCell: UITableViewCell {
     
-    let staticTitle = Utilities.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
-    let lblTitle = Utilities.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let staticTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let lblTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
     
     let imgView = UIImageView()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,7 +35,6 @@ class photoCell: UITableViewCell {
         
         staticTitle.leftAnchor.constraint(equalTo: imgView.rightAnchor, constant: 10).isActive = true
         staticTitle.topAnchor.constraint(equalTo: imgView.topAnchor, constant: 0).isActive = true
-        
 
         lblTitle.leftAnchor.constraint(equalTo: staticTitle.rightAnchor, constant: 0).isActive = true
         lblTitle.rightAnchor.constraint(equalTo: rightAnchor, constant: -10).isActive = true

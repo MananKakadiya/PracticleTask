@@ -14,7 +14,7 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
     let addContact = CNMutableContact()
     
-    let collView = Utilities.makeCollectionView()
+    let collView = UIViews.makeCollectionView()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -23,7 +23,7 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             phoneContacts.append(PhoneContactModel(contact: contact))
         }
         
-        let btnBack = Utilities.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
+        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnBack)
         btnBack.heightAnchor.constraint(equalToConstant: 50).isActive = true
         btnBack.widthAnchor.constraint(equalToConstant: 80).isActive = true
@@ -43,7 +43,7 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         collView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
         collView.register(phoneCell.self, forCellWithReuseIdentifier: "phoneCell")
         
-        let btnAddContact = Utilities.makeButton(titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white,backgroundImage: "addNumber", cornerRadius: 0.0, borderWidth: 0.0)
+        let btnAddContact = UIViews.makeButton(titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white,backgroundImage: "addNumber", cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnAddContact)
         btnAddContact.heightAnchor.constraint(equalToConstant: 50).isActive = true
         btnAddContact.widthAnchor.constraint(equalToConstant: 50).isActive = true

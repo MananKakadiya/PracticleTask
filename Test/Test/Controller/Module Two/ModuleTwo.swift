@@ -11,7 +11,7 @@ import Kingfisher
 class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    var photoTblView = Utilities.makeTableView()
+    var photoTblView = UIViews.makeTableView()
     var apiData = [PhotoModel]()
     
     
@@ -20,7 +20,7 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        let btnBack = Utilities.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
+        let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
         view.addSubview(btnBack)
         btnBack.heightAnchor.constraint(equalToConstant: 50).isActive = true
         btnBack.widthAnchor.constraint(equalToConstant: 80).isActive = true
@@ -32,6 +32,7 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         photoTblView.dataSource = self
         photoTblView.delegate = self
+        photoTblView.prefetchDataSource = self
         self.view.addSubview(photoTblView)
         
         photoTblView.topAnchor.constraint(equalTo: btnBack.bottomAnchor, constant: 10).isActive = true
@@ -45,6 +46,10 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
+        let model = apiData[indexPath.row]
+        let vc = ModuleTwoDetailVC()
+        vc.model = model
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +63,8 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.lblTitle.text = "\(model.title ?? "")"
             let url = URL(string: "\(model.thumbnailUrl ?? "")")
             cell.imgView.kf.setImage(with: url)
-            self.photoTblView.reloadData()
+            
+            cell.selectionStyle = .none
             
         }
         return cell
@@ -70,5 +76,17 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @objc func btnBack_Clicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ModuleTwo: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("prefetchRowsAt \(indexPaths)")
+       
+    }
+
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("cancelPrefetchingForRowsAt \(indexPaths)")
+        
     }
 }

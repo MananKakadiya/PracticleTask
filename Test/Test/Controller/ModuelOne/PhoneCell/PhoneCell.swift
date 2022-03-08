@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 class phoneCell: UICollectionViewCell {
-    let staticName = Utilities.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
-    let lblName = Utilities.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let staticName = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let lblName = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
     
-    let staticNumber = Utilities.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
-    let lblNumber = Utilities.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let staticNumber = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
+    let lblNumber = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: 18.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
     
     override func awakeFromNib() {
         super.awakeFromNib()
