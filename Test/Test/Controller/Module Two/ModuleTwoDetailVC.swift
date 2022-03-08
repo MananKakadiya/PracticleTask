@@ -8,14 +8,13 @@
 import UIKit
 
 class ModuleTwoDetailVC: UIViewController {
-    
     var model : PhotoModel? = nil
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
             self.view.backgroundColor = .white
+            
             let navigationView = UIViews.makeView(background: .white, cornerRadius: 0, borderWidth: 0)
             self.view.addSubview(navigationView)
             
@@ -76,8 +75,6 @@ class ModuleTwoDetailVC: UIViewController {
             
         }
     }
-    
-    
     
     @objc func btnBack_Clicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

@@ -8,7 +8,7 @@
 import UIKit
 import ContactsUI
 
-class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class ModuleOne: UIViewController{
     
     var phoneContacts = [PhoneContactModel]()
     let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
@@ -30,7 +30,6 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         btnBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 44).isActive = true
         btnBack.addTarget(self, action: #selector(btnBack_Clicked(_ :)), for: .touchUpInside)
         
-       
         layout.scrollDirection = UICollectionView.ScrollDirection.vertical
         collView.setCollectionViewLayout(layout, animated: true)
         collView.dataSource = self
@@ -53,36 +52,7 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return phoneContacts.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let model = phoneContacts[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "phoneCell", for: indexPath as IndexPath) as! phoneCell
-        cell.contentView.layer.borderWidth = 1
-        cell.lblName.text = "\(model.name ?? "")"
-        cell.lblNumber.text = "\(model.phoneNumber.first ?? "")"
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width/2.0) - 2
-        return CGSize(width: width, height: DEVICE.IS_IPHONE ? 130 : 165)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return DEVICE.IS_IPHONE ? 5 : 8
-    }
-    
+   
     @objc func btnBack_Clicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -129,3 +99,38 @@ class ModuleOne: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
+//MARK: CollectionView
+
+extension ModuleOne: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return phoneContacts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let model = phoneContacts[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "phoneCell", for: indexPath as IndexPath) as! phoneCell
+        cell.contentView.layer.borderWidth = 1
+        cell.lblName.text = "\(model.name ?? "")"
+        cell.lblNumber.text = "\(model.phoneNumber.first ?? "")"
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width/2.0) - 2
+        return CGSize(width: width, height: DEVICE.IS_IPHONE ? 130 : 165)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return DEVICE.IS_IPHONE ? 5 : 8
+    }
+    
+}

@@ -16,9 +16,7 @@ class photoCell: UITableViewCell {
     let imgView = UIImageView()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         addViews()
-        
     }
     
     func addViews(){

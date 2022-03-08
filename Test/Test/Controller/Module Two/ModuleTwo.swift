@@ -8,13 +8,10 @@
 import UIKit
 import Kingfisher
 
-class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class ModuleTwo: UIViewController{
     
     var photoTblView = UIViews.makeTableView()
     var apiData = [PhotoModel]()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +24,6 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         btnBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 44).isActive = true
         btnBack.addTarget(self, action: #selector(btnBack_Clicked(_ :)), for: .touchUpInside)
         
-        
-        
-        
         photoTblView.dataSource = self
         photoTblView.delegate = self
         photoTblView.prefetchDataSource = self
@@ -40,20 +34,18 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         photoTblView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: DEVICE.IS_IPHONE ? -10 : -15).isActive = true
         photoTblView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
         photoTblView.register(photoCell.self, forCellReuseIdentifier: "photoCell")
-        
         photoTblView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
-                self.photoTblView.es.addPullToRefresh {
-                    self.pullToRefresh()
-                }
+            self.photoTblView.es.addPullToRefresh {
+                self.pullToRefresh()
+            }
         }
     }
     
     func pullToRefresh(){
-       
         apiData.removeAll()
         NetworkClient.shared.callGETApi(url: StringConstants.baseURL) {responseData in
             if let model = self.Decode(modelClass: [PhotoModel].self, from: responseData){
@@ -71,6 +63,16 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.photoTblView.es.stopPullToRefresh()
         photoTblView.reloadData()
     }
+    
+    @objc func btnBack_Clicked(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+
+//MARK: TableView
+
+extension ModuleTwo: UITableViewDelegate, UITableViewDataSource ,UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
@@ -98,21 +100,15 @@ class ModuleTwo: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return DEVICE.IS_IPHONE ? 120 : 180
-        }
-    
-    @objc func btnBack_Clicked(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return DEVICE.IS_IPHONE ? 120 : 180
     }
-}
-
-extension ModuleTwo: UITableViewDataSourcePrefetching {
+    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         print("prefetchRowsAt \(indexPaths)")
-       
+        
     }
-
+    
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         print("cancelPrefetchingForRowsAt \(indexPaths)")
         
