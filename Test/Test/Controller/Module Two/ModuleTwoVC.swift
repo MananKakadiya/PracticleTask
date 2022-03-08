@@ -8,13 +8,29 @@
 import UIKit
 import Kingfisher
 
-class ModuleTwo: UIViewController{
+class ModuleTwoVC: UIViewController{
     
     var photoTblView = UIViews.makeTableView()
     var apiData = [PhotoModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetUp()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.photoTblView.es.addPullToRefresh {
+                self.pullToRefresh()
+            }
+        }
+    }
+}
+
+//MARK: Other Viewcontroller's Method
+extension ModuleTwoVC {
+    
+    func initialSetUp(){
         self.view.backgroundColor = .white
         
         let btnBack = UIViews.makeButton(title: "Back", titleColor: .blue, font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0)
@@ -33,16 +49,8 @@ class ModuleTwo: UIViewController{
         photoTblView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DEVICE.IS_IPHONE ? 10 : 15).isActive = true
         photoTblView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: DEVICE.IS_IPHONE ? -10 : -15).isActive = true
         photoTblView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
-        photoTblView.register(photoCell.self, forCellReuseIdentifier: "photoCell")
+        photoTblView.register(PhotoCell.self, forCellReuseIdentifier: "PhotoCell")
         photoTblView.reloadData()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        DispatchQueue.main.async {
-            self.photoTblView.es.addPullToRefresh {
-                self.pullToRefresh()
-            }
-        }
     }
     
     func pullToRefresh(){
@@ -63,16 +71,19 @@ class ModuleTwo: UIViewController{
         self.photoTblView.es.stopPullToRefresh()
         photoTblView.reloadData()
     }
-    
+}
+
+//MARK: Button Action
+
+extension ModuleTwoVC {
     @objc func btnBack_Clicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
 }
 
-
 //MARK: TableView
 
-extension ModuleTwo: UITableViewDelegate, UITableViewDataSource ,UITableViewDataSourcePrefetching {
+extension ModuleTwoVC: UITableViewDelegate, UITableViewDataSource ,UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Num: \(indexPath.row)")
@@ -87,7 +98,7 @@ extension ModuleTwo: UITableViewDelegate, UITableViewDataSource ,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath as IndexPath) as! photoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath as IndexPath) as! PhotoCell
         DispatchQueue.main.async {
             let model = self.apiData[indexPath.row]
             cell.lblTitle.text = "\(model.title ?? "")"

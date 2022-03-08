@@ -8,7 +8,7 @@
 import UIKit
 import ContactsUI
 
-class ModuleOne: UIViewController{
+class ModuleOneVC: UIViewController{
     
     var phoneContacts = [PhoneContactModel]()
     let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
@@ -17,6 +17,18 @@ class ModuleOne: UIViewController{
     let collView = UIViews.makeCollectionView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetUp()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+}
+
+//MARK: Other Viewcontroller's Method
+
+extension ModuleOneVC {
+    func initialSetUp(){
         self.view.backgroundColor = .white
         
         for contact in Utilities.getContacts() {
@@ -51,8 +63,11 @@ class ModuleOne: UIViewController{
         btnAddContact.addTarget(self, action: #selector(btnAddContact_Clicked(_ :)), for: .touchUpInside)
         
     }
-    
-   
+}
+
+//MARK: Button Action
+
+extension ModuleOneVC{
     @objc func btnBack_Clicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -101,7 +116,7 @@ class ModuleOne: UIViewController{
 
 //MARK: CollectionView
 
-extension ModuleOne: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension ModuleOneVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return phoneContacts.count

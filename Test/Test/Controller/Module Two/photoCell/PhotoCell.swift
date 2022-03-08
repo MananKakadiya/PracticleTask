@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class photoCell: UITableViewCell {
+class PhotoCell: UITableViewCell {
     
     let staticTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)
     let lblTitle = UIViews.makeLabel(font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 0.0, borderWidth: 0.0, borderColor: .clear)

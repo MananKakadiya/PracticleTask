@@ -11,6 +11,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetUp()
+    }
+    
+    func initialSetUp(){
         let btnModuleOne = UIViews.makeButton(title: "Module 1", titleColor: .black, font: UIFont.init(name: "Arial", size: DEVICE.IS_IPHONE ? 15.0 : 20.0), background: .white, cornerRadius: 3.0, borderWidth: 2)
         view.addSubview(btnModuleOne)
         // Adding Constraints
@@ -31,9 +35,15 @@ class ViewController: UIViewController {
         btnModuleTwo.addTarget(self, action: #selector(navigateToModuleTwo(_ :)), for: .touchUpInside)
         
     }
+
+}
+
+
+//MARK: Button Action:
+extension ViewController{
     
     @objc func navigateToModuleOne(_ sender: UIButton) {
-        let vc = ModuleOne()
+        let vc = ModuleOneVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -42,7 +52,7 @@ class ViewController: UIViewController {
             if let model = self.Decode(modelClass: [PhotoModel].self, from: responseData){
                 print(model)
                 DispatchQueue.main.async {
-                    let vc = ModuleTwo()
+                    let vc = ModuleTwoVC()
                     vc.apiData = model
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -50,4 +60,3 @@ class ViewController: UIViewController {
         }
     }
 }
-

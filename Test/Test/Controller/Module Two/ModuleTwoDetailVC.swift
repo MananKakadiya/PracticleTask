@@ -12,6 +12,18 @@ class ModuleTwoDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initialSetUp()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+}
+
+
+//MARK: Other Viewcontroller's Method
+extension ModuleTwoDetailVC {
+    func initialSetUp(){
         DispatchQueue.main.async {
             self.view.backgroundColor = .white
             
@@ -75,7 +87,10 @@ class ModuleTwoDetailVC: UIViewController {
             
         }
     }
-    
+}
+
+//MARK: Button Action
+extension ModuleTwoDetailVC {
     @objc func btnBack_Clicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
